@@ -1,0 +1,295 @@
+/*
+File: style.css
+Version: 1.0.0
+Directory: huggingphaze.com/src/css/
+Description: Provides the styling for the HuggingPhaze website, implementing the dark theme and color-coded feedback system.
+Notes:
+  - Uses CSS custom properties (variables) for consistent color management.
+  - Implements the 'green', 'yellow-gold', and 'red' theme states via body classes.
+  - Includes basic responsive design for optimal viewing on mobile devices.
+  - 'Bubblegum Sans' is the primary font, providing a bubbly, inviting aesthetic.
+  - Accessibility considerations include high contrast, focus states, and visually-hidden classes for screen readers.
+*/
+:root {
+    --color-green-bright: #00ff00;
+    --color-yellow-gold: #FFD700;
+    --color-red-bright: #FF0000;
+    --color-black-bg: #000000;
+    --color-charcoal-shadow: #333333; /* Slightly lighter for visibility on black */
+    --color-white-text: #ffffff;
+}
+
+body {
+    font-family: 'Bubblegum Sans', cursive; /* Your chosen bubbly font */
+    background-color: var(--color-black-bg);
+    color: var(--color-green-bright); /* Default text color */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for longer content */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px; /* Constrain for mobile readability */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.logo-text {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: var(--color-white-text); /* Tagline can be white for contrast */
+    margin-top: 0;
+}
+
+.question-mark-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--color-black-bg);
+    color: var(--color-green-bright);
+    border: 2px solid var(--color-green-bright);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    display: flex; /* For centering the question mark */
+    justify-content: center;
+    align-items: center;
+}
+
+.question-mark-btn:hover {
+    background-color: var(--color-green-bright);
+    color: var(--color-black-bg);
+}
+
+.workflow-section {
+    background-color: var(--color-black-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--color-charcoal-shadow);
+    border: 2px solid var(--color-green-bright); /* Default workflow border */
+    transition: border-color 0.5s ease-in-out;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: var(--color-green-bright);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-white-text); /* Instructions can be white */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-green-bright);
+    font-size: 1.1em;
+}
+
+textarea, select {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 10px;
+    background-color: var(--color-black-bg);
+    color: var(--color-white-text);
+    border: 2px solid var(--color-green-bright);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+    box-shadow: inset 0 0 5px var(--color-charcoal-shadow);
+    transition: border-color 0.3s ease-in-out;
+    resize: vertical; /* Allow vertical resizing for textareas */
+}
+
+textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--color-yellow-gold); /* Focus color */
+}
+
+.action-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin-top: 30px;
+    background-color: var(--color-black-bg);
+    color: var(--color-green-bright);
+    border: 2px solid var(--color-green-bright);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 5px var(--color-charcoal-shadow);
+}
+
+.action-button:hover,
+.action-button:focus {
+    background-color: var(--color-green-bright);
+    color: var(--color-black-bg);
+    outline: none;
+}
+
+.output-area {
+    background-color: var(--color-black-bg);
+    border: 2px solid var(--color-green-bright);
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 4px;
+    min-height: 80px;
+    color: var(--color-white-text);
+    box-shadow: inset 0 0 5px var(--color-charcoal-shadow);
+    transition: border-color 0.5s ease-in-out;
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: var(--color-green-bright); /* Default status color */
+    transition: color 0.5s ease-in-out;
+}
+
+/* Sound Caption Bubbles */
+.sound-caption-bubble {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    color: var(--color-white-text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; /* Make it not interfere with clicks */
+}
+
+.sound-caption-bubble.active {
+    opacity: 1;
+}
+
+/* Visually hidden for screen readers, but still accessible */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Theme color classes for JavaScript to toggle */
+.theme-green .workflow-section,
+.theme-green .input-group label,
+.theme-green textarea,
+.theme-green select,
+.theme-green .action-button,
+.theme-green .output-area,
+.theme-green .question-mark-btn {
+    border-color: var(--color-green-bright);
+}
+.theme-green .question-mark-btn,
+.theme-green .section-title,
+.theme-green .status-message,
+.theme-green .input-group label { /* Changed label color for consistency */
+    color: var(--color-green-bright);
+}
+.theme-green .action-button:hover,
+.theme-green .action-button:focus,
+.theme-green .question-mark-btn:hover {
+    background-color: var(--color-green-bright);
+    color: var(--color-black-bg);
+}
+
+
+.theme-yellow-gold .workflow-section,
+.theme-yellow-gold .input-group label,
+.theme-yellow-gold textarea,
+.theme-yellow-gold select,
+.theme-yellow-gold .action-button,
+.theme-yellow-gold .output-area,
+.theme-yellow-gold .question-mark-btn {
+    border-color: var(--color-yellow-gold);
+}
+.theme-yellow-gold .question-mark-btn,
+.theme-yellow-gold .section-title,
+.theme-yellow-gold .status-message,
+.theme-yellow-gold .input-group label {
+    color: var(--color-yellow-gold);
+}
+.theme-yellow-gold .action-button:hover,
+.theme-yellow-gold .action-button:focus,
+.theme-yellow-gold .question-mark-btn:hover {
+    background-color: var(--color-yellow-gold);
+    color: var(--color-black-bg);
+}
+
+
+.theme-red-bright .workflow-section,
+.theme-red-bright .input-group label,
+.theme-red-bright textarea,
+.theme-red-bright select,
+.theme-red-bright .action-button,
+.theme-red-bright .output-area,
+.theme-red-bright .question-mark-btn {
+    border-color: var(--color-red-bright);
+}
+.theme-red-bright .question-mark-btn,
+.theme-red-bright .section-title,
+.theme-red-bright .status-message,
+.theme-red-bright .input-group label {
+    color: var(--color-red-bright);
+}
+.theme-red-bright .action-button:hover,
+.theme-red-bright .action-button:focus,
+.theme-red-bright .question-mark-btn:hover {
+    background-color: var(--color-red-bright);
+    color: var(--color-black-bg);
+}
+
+/* Basic mobile adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 10px;
+    }
+    .logo-text {
+        font-size: 2em;
+    }
+    .section-title {
+        font-size: 1.5em;
+    }
+    .question-mark-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+    }
+}

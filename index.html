@@ -1,0 +1,81 @@
+<!--
+File: index.html
+Version: 1.0.0
+Directory: huggingphaze.com/
+Description: Defines the structure and content of the HuggingPhaze Social Spark Generator webpage.
+Notes:
+  - This is the main entry point for the static GitHub Pages site.
+  - Contains placeholders for logo image (replace comment with actual <img> tag when ready).
+  - Integrates the main CSS stylesheet and JavaScript logic.
+  - Semantic HTML5 structure is used for accessibility.
+  - Future expansion will involve adding more workflow sections or linking to dedicated workflow pages.
+  - 'Bubblegum Sans' font is loaded from Google Fonts.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuggingPhaze - Social Spark Generator</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+</head>
+<body class="theme-green">
+    <div class="container">
+        <header>
+            <!-- Placeholder for logo image with alt text -->
+            <!-- <img src="path/to/your/logo.png" alt="HuggingPhaze logo: A smiling face with sunglasses and a mustache, outlined in green, gently embracing a stylized smartphone. The outline subtly gradients from green to yellow-gold to red."> -->
+            <h1 class="logo-text">HuggingPhaze</h1>
+            <p class="tagline">Unleash Your Ideas with AI, Simply.</p>
+            <button class="question-mark-btn" aria-label="How this system works">?</button>
+            <span id="soundCaptionHeader" class="sound-caption-bubble" aria-live="polite"></span> <!-- Sound caption for header actions -->
+        </header>
+
+        <main class="workflow-section">
+            <h2 class="section-title">Social Spark Generator 💡</h2>
+            <p class="instructions">Tell us what you want to post about!</p>
+
+            <div class="input-group">
+                <label for="postTopic">What's your post about?</label>
+                <textarea id="postTopic" placeholder="e.g., 'our new eco-friendly product', 'benefits of daily meditation'" aria-describedby="topicHelp"></textarea>
+                <small id="topicHelp" class="visually-hidden">Enter the main subject of your social media post.</small>
+            </div>
+
+            <div class="input-group">
+                <label for="targetPlatform">Target Platform:</label>
+                <select id="targetPlatform" aria-describedby="platformHelp">
+                    <option value="twitter">Twitter</option>
+                    <option value="instagram">Instagram Caption</option>
+                    <option value="facebook">Facebook Post</option>
+                    <option value="linkedin">LinkedIn Post</option>
+                </select>
+                <small id="platformHelp" class="visually-hidden">Choose the social media platform where you intend to publish this post.</small>
+            </div>
+
+            <div class="input-group">
+                <label for="desiredTone">Desired Tone:</label>
+                <select id="desiredTone" aria-describedby="toneHelp">
+                    <option value="casual">Casual</option>
+                    <option value="professional">Professional</option>
+                    <option value="enthusiastic">Enthusiastic</option>
+                    <option value="humorous">Humorous</option>
+                    <option value="informative">Informative</option>
+                    <option value="inspirational">Inspirational</option>
+                </select>
+                <small id="toneHelp" class="visually-hidden">Select the emotional style for your post, like casual or professional.</small>
+            </div>
+
+            <button id="generateSparkBtn" class="action-button">Generate Spark!</button>
+            <span id="soundCaptionButton" class="sound-caption-bubble" aria-live="polite"></span> <!-- Sound caption for button press -->
+
+            <div id="outputArea" class="output-area" aria-live="polite">
+                <p>Your ideas will appear here!</p>
+            </div>
+            
+            <div id="statusMessage" class="status-message" aria-live="polite"></div>
+        </main>
+    </div>
+
+    <script src="src/js/main.js"></script>
+</body>
+</html>

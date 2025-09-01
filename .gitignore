@@ -1,0 +1,13 @@
+# File: .gitignore
+# Version: 1.0.0
+# Directory: huggingphaze.com/
+# Description: Specifies intentionally untracked files that Git should ignore.
+# Notes:
+#   - Common ignore patterns for Node.js projects (node_modules, .env) are included.
+#   - Can be expanded to include other build-tool specific ignore patterns (e.g., .parcel-cache, dist/)
+#   - .DS_Store is for macOS system files.
+
+# Node.js
+node_modules/
+.env
+.DS_Store
